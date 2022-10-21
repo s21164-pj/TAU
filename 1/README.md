@@ -1,0 +1,3 @@
+# CarRental
+## Testy
+mvn test
