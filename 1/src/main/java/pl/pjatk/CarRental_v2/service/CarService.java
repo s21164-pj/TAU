@@ -28,6 +28,9 @@ public class CarService {
     }
 
     public Car addCar(Car car) {
+        if (car == null) {
+            throw new IllegalArgumentException("car mark cannot be null");
+        }
         return carRepository.save(car);
     }
 

@@ -41,4 +41,9 @@ public class CarServiceTest {
         assertThat(car).isNotNull();
     }
 
+    @Test
+    void shouldThrowIllegalArgumentExceptionDuringAdd() {
+        assertThrows(IllegalArgumentException.class, () -> carService.addCar(null));
+    }
+
 }
