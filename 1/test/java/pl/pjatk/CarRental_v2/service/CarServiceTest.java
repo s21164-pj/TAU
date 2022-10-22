@@ -43,7 +43,13 @@ public class CarServiceTest {
 
     @Test
     void shouldThrowIllegalArgumentExceptionDuringAdd() {
-        assertThrows(IllegalArgumentException.class, () -> carService.addCar(null));
+        assertThrows(IllegalArgumentException.class, ()->carService.addCar(null));
+    }
+
+    @Test
+    void shouldThrowCarCannotBeNullDuringAdding() {
+        IllegalStateException ex = assertThrows(IllegalStateException.class, ()->carService.addCar(null));
+        assertEquals(ex.getMessage(), "car cannot be null");
     }
 
 }
