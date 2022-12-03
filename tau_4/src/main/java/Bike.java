@@ -18,7 +18,11 @@ public class Bike {
     }
 
     public void setPedaling(boolean pedaling) {
-        isPedaling = pedaling;
+        if (isPedaling == false) {
+            isPedaling = pedaling;
+        }else {
+            throw new IllegalStateException("already pedaling");
+        }
     }
 
     public void prepareToRideInWet() {
