@@ -1,0 +1,30 @@
+name: Automated test per project
+
+on:
+  push:
+    branches: [ "main" ]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - uses: dorny/paths-filter@v2
+      id: filter
+      with:
+        filters: |
+          lab4:
+            - 'tau_4'
+    - name: Set up JDK 17 for Lab4
+      if: steps.filter.outputs.lab4 == 'true'
+      uses: actions/setup-java@v3
+      with:
+        java-version: '19'
+        distribution: 'temurin'
+        cache: maven
+
+
+
+
+    - name: Test Lab4 project with Maven
+      if: steps.filter.outputs.lab4 == 'true'
+      run: cd tau_4k && mvn test --file pom.xml
