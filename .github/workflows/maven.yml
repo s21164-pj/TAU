@@ -13,7 +13,7 @@ jobs:
       with:
         filters: |
           lab4:
-            - 'tau_4/src'
+            - 'tau_4'
     - name: Set up JDK 17 for Lab4
       if: steps.filter.outputs.lab4 == 'true'
       uses: actions/setup-java@v3
@@ -27,4 +27,4 @@ jobs:
 
     - name: Test Lab4 project with Maven
       if: steps.filter.outputs.lab4 == 'true'
-      run: cd Lab4/Tank && mvn test --file pom.xml
+      run: cd tau_4k && mvn test --file pom.xml
